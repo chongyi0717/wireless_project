@@ -281,7 +281,7 @@ def main():
     file=pathlib.Path("gaussin.txt")
     file.touch(exist_ok=TRUE)
     filename=""
-    count=10
+    count=90
     for i in range(count):
         mp=Map("best_effort")
         mp.win.mainloop()
