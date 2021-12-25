@@ -1,12 +1,24 @@
 import pickle
 import numpy as np
 import matplotlib.pyplot as plt
+import pathlib
+from tkinter.constants import CENTER, LEFT, NW, SUNKEN, TRUE
 BEST_EFFORT_FILE_NAME="best_effort.txt"
 THRESHOLD_FILE_NAME="threshold.txt"
 ENTROPY_FILE_NAME="entropy.txt"
 MY_ALGO_FILE_NAME="my_algo.txt"
 listy=[]
 list=[]
+file=pathlib.Path(BEST_EFFORT_FILE_NAME)
+file.touch(exist_ok=TRUE)
+file=pathlib.Path(THRESHOLD_FILE_NAME)
+file.touch(exist_ok=TRUE)
+file=pathlib.Path(ENTROPY_FILE_NAME)
+file.touch(exist_ok=TRUE)
+file=pathlib.Path(MY_ALGO_FILE_NAME)
+file.touch(exist_ok=TRUE)
+file=pathlib.Path("gaussin.txt")
+file.touch(exist_ok=TRUE)
 with open(BEST_EFFORT_FILE_NAME,"rb") as fp:
         try:
             list=pickle.load(fp)

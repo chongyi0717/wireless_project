@@ -12,6 +12,7 @@ DISTANCE = 2.5
 PROBABILITY_OF_CAR_ENTRY=1/12
 SPEED = 0.02
 CALL_TIME=5
+MAP_TIME=3600
 BEST_EFFORT_FILE_NAME="best_effort.txt"
 THRESHOLD_FILE_NAME="threshold.txt"
 ENTROPY_FILE_NAME="entropy.txt"
@@ -261,7 +262,7 @@ class Map:
                 self.gaussin_count+=1
         self.handoff_list.append(self.handoff_count)
         self.time_list.append(self.time_count)
-        if(self.time_count>1000):
+        if(self.time_count>MAP_TIME):
             self.win.quit()
         else:
             self.win.after(10,self.update_clock)
@@ -279,8 +280,8 @@ def main():
     file.touch(exist_ok=TRUE)
     file=pathlib.Path("gaussin.txt")
     file.touch(exist_ok=TRUE)
-    filename="" 
-    count=5
+    filename=""
+    count=10
     for i in range(count):
         mp=Map("best_effort")
         mp.win.mainloop()
