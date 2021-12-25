@@ -54,7 +54,7 @@ with open(MY_ALGO_FILE_NAME,"rb") as fp:
 listx=["best effort","threshold","entropy","my algorithm"]
 plt.bar(listx,listy)
 plt.title("Average of handoff time in different algorithm")
-plt.savefig("call_time_distribution.png")
+plt.savefig("distribution.png")
 plt.show()
 with open("gaussin.txt","rb") as fp:
     list=pickle.load(fp)
@@ -62,5 +62,5 @@ plt.title("Call time distribution")
 plt.xlabel("call time (sec)")
 plt.ylabel("Frequency of call time")
 plt.hist(list)
-plt.savefig("distribution")
+plt.savefig("call_time_distribution.png")
 plt.show()
