@@ -32,7 +32,7 @@ class Car:
         self.call_time=0
         self.real_call_time=0
         self.speed=adjust_for_map(SPEED)
-        self.lb=tk.Label(background="red")
+        self.lb=tk.Label(background="black")
         self.lb.place(x=x,y=y,width=5,height=5)
     def move_straight(self,seed):
         if(self.direction=="TOP"):
@@ -89,6 +89,7 @@ class Car:
         elif(self.direction=="BOTTOM"):
             self.y+=self.speed
         self.lb.place(x=self.x,y=self.y)
+        self.lb.update()
 
 class Intersection:
     def __init__(self,x,y):
@@ -245,6 +246,7 @@ class Map:
                 i.real_call_time+=1
                 if(i.real_call_time>=i.call_time):
                     i.mode="release"
+                    i.lb.config(background="black")
                     i.call_time=0
                     i.real_call_time=0
             if(int(i.x) % int(adjust_for_map(2.5)) == 0 and int(i.y) % int(adjust_for_map(2.5)) ==0):
@@ -258,6 +260,7 @@ class Map:
             rand=random.random()
             if(rand<(1/1800)):
                 i.mode="call"
+                i.lb.config(background="red")
                 i.call_time=self.gaussin[self.gaussin_count%1000]
                 self.gaussin_count+=1
         self.handoff_list.append(self.handoff_count)
@@ -265,7 +268,7 @@ class Map:
         if(self.time_count>MAP_TIME):
             self.win.quit()
         else:
-            self.win.after(10,self.update_clock)
+            self.win.after(1,self.update_clock)
             
         
 
