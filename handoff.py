@@ -253,7 +253,10 @@ class Map:
                 rand=random.random()
             else:
                 rand=-1
-            i.move_straight(rand)
+            try:
+                i.move_straight(rand)
+            except:
+                exit(0)
             if(i.x>500 or i.x<0 or i.y<0 or i.y>500):
                 i.lb.destroy()
                 self.cars.remove(i)
@@ -268,8 +271,10 @@ class Map:
         if(self.time_count>MAP_TIME):
             self.win.quit()
         else:
-            self.win.after(1,self.update_clock)
-            
+            try:
+                self.win.after(1,self.update_clock)
+            except:
+                exit(0)
         
 
 def main():
@@ -288,7 +293,10 @@ def main():
     for i in range(count):
         mp=Map("best_effort")
         mp.win.mainloop()
-        mp.win.destroy()
+        try:
+            mp.win.destroy()
+        except:
+            exit(0)
         if(mp.mode=="best_effort"):
             filename=BEST_EFFORT_FILE_NAME
         elif(mp.mode=="threshold"):
@@ -310,7 +318,10 @@ def main():
     for i in range(count):
         mp=Map("threshold")
         mp.win.mainloop()
-        mp.win.destroy()
+        try:
+            mp.win.destroy()
+        except:
+            exit(0)
         if(mp.mode=="best_effort"):
             filename=BEST_EFFORT_FILE_NAME
         elif(mp.mode=="threshold"):
@@ -332,7 +343,10 @@ def main():
     for i in range(count):
         mp=Map("entropy")
         mp.win.mainloop()
-        mp.win.destroy()
+        try:
+            mp.win.destroy()
+        except:
+            exit(0)
         if(mp.mode=="best_effort"):
             filename=BEST_EFFORT_FILE_NAME
         elif(mp.mode=="threshold"):
@@ -354,7 +368,10 @@ def main():
     for i in range(count):
         mp=Map("my_algorithm")
         mp.win.mainloop()
-        mp.win.destroy()
+        try:
+            mp.win.destroy()
+        except:
+            exit(0)
         if(mp.mode=="best_effort"):
             filename=BEST_EFFORT_FILE_NAME
         elif(mp.mode=="threshold"):
